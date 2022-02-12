@@ -393,6 +393,21 @@ public class DrawTool {
     }
 
     /**
+     * zeichnet ein 3D Objekt
+     * @param x Die x-Position des Mittelpunktes
+     * @param y Die y-Position des Mittelpunktes
+     * @param xRotation Die rotation um die x-Achse
+     * @param yRotation Die rotation um die y-Achse
+     * @param zRotation Die rotation um die z-Achse
+     * @param polygons Die polygone des objektes
+     */
+    public void drawThreeDObject(double x,double y,double xRotation,double yRotation,double zRotation,PolygonThreeD... polygons){
+        ThreeDObject t=new ThreeDObject(x, y, polygons);
+        t.rotate(true,xRotation,yRotation,zRotation);
+        if(graphics2D!=null) t.draw(graphics2D);
+    }
+
+    /**
      * Zeichnet einen Text an die gewuenschte Stelle
      * @param x Die x-Position des Textbeginns
      * @param y Die y-Position des Textbeginns
