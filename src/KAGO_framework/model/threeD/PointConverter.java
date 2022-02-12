@@ -1,5 +1,7 @@
 package KAGO_framework.model.threeD;
 
+import my_project.Config;
+
 import java.awt.*;
 
 public class PointConverter {
@@ -23,7 +25,7 @@ public class PointConverter {
         double theta=Math.atan2(y3d,x3d);
         double depth2=15-depth;
         double localScale=Math.abs(1400/(depth2+1400));
-        dist*=localScale;
+        if(!Config.ORTHOGRAPHIC_VIEW) dist*=localScale;
         double[] newVal = new double[2];
         newVal[0]=dist*Math.cos(theta);
         newVal[1]=dist*Math.sin(theta);
