@@ -2,12 +2,12 @@ package KAGO_framework.model.threeD;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 public class PolygonThreeD{
 
-    private PointThreeD[] points;
+    private final PointThreeD[] points;
     private Color color;
 
     /**
@@ -29,9 +29,9 @@ public class PolygonThreeD{
      */
     public void draw(Graphics2D g,double x,double y){
         Polygon poly=new Polygon();
-        for(int i=0;i< points.length;i++){
-            Point p = PointConverter.convertPoint(points[i]);
-            poly.addPoint((int) (p.x+x), (int) (p.y+y));
+        for (PointThreeD point : points) {
+            Point p = PointConverter.convertPoint(point);
+            poly.addPoint((int) (p.x + x), (int) (p.y + y));
         }
         g.setColor(color);
         g.fillPolygon(poly);
@@ -70,19 +70,15 @@ public class PolygonThreeD{
     /**
      * sortiert ein Array von Polygonen, damit diese in der Richtigen Reihenfolge gezeichnet werden können
      */
-    public static PolygonThreeD[] sortPolygons(PolygonThreeD[] p){
-        List<PolygonThreeD> polygonList=new ArrayList<>();
+    public static void sortPolygons(PolygonThreeD[] p){
 
-        for(PolygonThreeD value:p){
-            polygonList.add(value);
-        }
+        List<PolygonThreeD> polygonList = new ArrayList<>(Arrays.asList(p));
 
-        Collections.sort(polygonList, (p1, p2) -> p2.getAverageX()-p1.getAverageX()<0?1:-1);
+        polygonList.sort((p1, p2) -> p2.getAverageX() - p1.getAverageX() < 0 ? 1 : -1);
 
         for(int i=0;i<p.length;i++){
             p[i] = polygonList.get(i);
         }
-        return p;
     }
 
 }

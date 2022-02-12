@@ -4,21 +4,18 @@ import java.awt.*;
 
 public class PointConverter {
 
-    private static double scale = 1;
-
     /**
      * convertiert einen 3D Punkt zu einem 2D Punkt
      */
     public static Point convertPoint(PointThreeD p){
-        double x3d = p.getY()*scale;
-        double y3d = p.getZ()*scale;
-        double depth = p.getX()*scale;
+        double x3d = p.getY();
+        double y3d = p.getZ();
+        double depth = p.getX();
         double[] newVal = scale(x3d,y3d,depth);
         int x2d = (int) newVal[0];
         int y2d = (int) newVal[1];
 
-        Point point = new Point(x2d,y2d);
-        return point;
+        return new Point(x2d,y2d);
     }
 
     public static double[] scale(double x3d,double y3d,double depth){

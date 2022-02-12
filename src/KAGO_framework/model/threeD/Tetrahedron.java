@@ -4,9 +4,9 @@ import java.awt.*;
 
 public class Tetrahedron{
 
-    private PolygonThreeD[] polygons;
+    private final PolygonThreeD[] polygons;
     private Color color;
-    private double x,y;
+    private final double x,y;
 
     public Tetrahedron(Color color,double x,double y,PolygonThreeD... polygons){
         this.color=color;
