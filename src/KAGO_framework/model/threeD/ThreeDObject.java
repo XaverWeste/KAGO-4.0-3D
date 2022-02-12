@@ -2,13 +2,13 @@ package KAGO_framework.model.threeD;
 
 import java.awt.*;
 
-public class Tetrahedron{
+public class ThreeDObject {
 
     private final PolygonThreeD[] polygons;
     private Color color;
     private final double x,y;
 
-    public Tetrahedron(Color color,double x,double y,PolygonThreeD... polygons){
+    public ThreeDObject(Color color, double x, double y, PolygonThreeD... polygons){
         this.color=color;
         this.x=x;
         this.y=y;
@@ -16,7 +16,7 @@ public class Tetrahedron{
         setColor(this.color);
     }
 
-    public Tetrahedron(double x,double y,PolygonThreeD... polygons){
+    public ThreeDObject(double x, double y, PolygonThreeD... polygons){
         this.x=x;
         this.y=y;
         this.polygons=polygons;

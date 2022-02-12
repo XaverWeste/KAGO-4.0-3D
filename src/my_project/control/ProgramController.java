@@ -1,10 +1,8 @@
 package my_project.control;
 
-import KAGO_framework.control.DatabaseController;
 import KAGO_framework.control.ViewController;
-import my_project.model.House;
+import my_project.model.Example;
 
-import javax.swing.*;
 import java.awt.event.MouseEvent;
 
 /**
@@ -35,7 +33,7 @@ public class ProgramController {
      */
     public void startProgram() {
         //Hier wird eine lokale Referenz für ein House-Objekt angelegt.
-        House firstHouse = new House();
+        Example firstHouse = new Example();
 
         //Damit die draw-Methode des Objekts hinter firstHouse aufgerufen wird,
         //muss dem ViewController-Objekt mitgeteilt werden, dass es das House-Objekt zeichnen soll.
