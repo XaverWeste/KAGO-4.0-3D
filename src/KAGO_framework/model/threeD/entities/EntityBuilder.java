@@ -48,4 +48,27 @@ public class EntityBuilder {
         );
         return new Entity(new ArrayList<>(){{ add(t); }});
     }
+
+    public static Entity createDiamond(double x,double y,double size,int edges,double inFactor){
+        if(edges<6) edges=10;
+        if(inFactor>1||inFactor<=0) inFactor=0.8;
+        PointThreeD bottom = new PointThreeD(0,0,-size/2);
+        PointThreeD[] outerPoints = new PointThreeD[edges];
+        PointThreeD[] innerPoints = new PointThreeD[edges];
+        for(int i=0;i<edges;i++){
+            double theta = 2*Math.PI/edges*i;
+            double xPos = -Math.sin(theta)*size/2;
+            double yPos = Math.cos(theta)*size/2;
+            double zPos = size/2;
+            outerPoints[i] = new PointThreeD(xPos,yPos,zPos);
+            innerPoints[i] = new PointThreeD(xPos*inFactor,yPos*inFactor,zPos*inFactor);
+        }
+        PolygonThreeD[] polygons = new PolygonThreeD[2*edges+1];
+        for(int i=0;i<edges;i++){
+            polygons[i]= new PolygonThreeD(outerPoints[i],bottom,outerPoints[(i+1)%edges],innerPoints[(i+1)%edges],innerPoints[i]);
+        }
+        polygons[edges*2]=new PolygonThreeD(innerPoints);
+        ThreeDObject t=new ThreeDObject(x,y,polygons);
+        return new Entity(new ArrayList<>(){{add(t);}});
+    }
 }

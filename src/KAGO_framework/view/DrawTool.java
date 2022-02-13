@@ -365,6 +365,23 @@ public class DrawTool {
     }
 
     /**
+     * zeichnet einen 3D Diamanten
+     * @param x Die x-Position des Mittelpunktes
+     * @param y Die y-Position des Mittelpunktes
+     * @param size Die größe des Diamanten
+     * @param edges Die Anzahl der Seiten
+     * @param inFactor Die größe der oberen Seite
+     * @param xRotation Die rotation um die x-Achse
+     * @param yRotation Die rotation um die y-Achse
+     * @param zRotation Die rotation um die z-Achse
+     */
+    public void drawDimond(double x,double y,double size,int edges,double inFactor,double xRotation,double yRotation,double zRotation){
+        Entity e= EntityBuilder.createDiamond(x,y,size,edges,inFactor);
+        e.rotate(true,xRotation,yRotation,zRotation);
+        if(graphics2D!=null) e.draw(graphics2D);
+    }
+
+    /**
      * zeichnet ein 3D Objekt
      * @param x Die x-Position des Mittelpunktes
      * @param y Die y-Position des Mittelpunktes

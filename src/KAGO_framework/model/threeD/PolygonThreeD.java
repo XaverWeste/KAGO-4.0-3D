@@ -25,6 +25,19 @@ public class PolygonThreeD{
     }
 
     /**
+     * Polygon im 3D Raum
+     * @param points Die Eckpunkte des Polygons
+     */
+    public PolygonThreeD(PointThreeD... points){
+        this.points = new PointThreeD[points.length];
+        for(int i=0;i< points.length;i++){
+            PointThreeD p = points[i];
+            this.points[i]=new PointThreeD(p.getX(),p.getY(),p.getZ());
+        }
+        color=Color.RED;
+    }
+
+    /**
      * zeichnet das Polygon
      */
     public void draw(Graphics2D g,double x,double y){
