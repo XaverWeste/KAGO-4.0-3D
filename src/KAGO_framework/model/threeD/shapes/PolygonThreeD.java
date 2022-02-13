@@ -99,9 +99,9 @@ public class PolygonThreeD{
 
     public void translate(double x, double y, double z){
         for(PointThreeD value:points){
-            value.setX(value.getX()+x);
-            value.setY(value.getY()+y);
-            value.setZ(value.getZ()+z);
+            value.xOffset+=x;
+            value.yOffset+=y;
+            value.zOffset+=z;
         }
     }
 

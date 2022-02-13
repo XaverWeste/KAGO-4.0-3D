@@ -10,9 +10,9 @@ public class PointConverter {
      * convertiert einen 3D Punkt zu einem 2D Punkt
      */
     public static Point convertPoint(PointThreeD p){
-        double x3d = p.getY();
-        double y3d = p.getZ();
-        double depth = p.getX();
+        double x3d = p.getAdjustedY();
+        double y3d = p.getAdjustedZ();
+        double depth = p.getAdjustedX();
         double[] newVal = scale(x3d,y3d,depth);
         int x2d = (int) newVal[0];
         int y2d = (int) newVal[1];

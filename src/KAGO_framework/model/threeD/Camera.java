@@ -1,6 +1,5 @@
 package KAGO_framework.model.threeD;
 
-
 public class Camera {
 
     private double x,y,z;

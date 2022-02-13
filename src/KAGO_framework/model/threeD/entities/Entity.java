@@ -5,7 +5,7 @@ import KAGO_framework.model.threeD.shapes.ThreeDObject;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Entity implements Entitize {
+public class Entity {
 
     private ArrayList<ThreeDObject> objects;
 

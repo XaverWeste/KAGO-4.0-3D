@@ -1,6 +1,5 @@
 package my_project.control;
 
-import KAGO_framework.control.Interactable;
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.threeD.entities.EntityManager;
 import my_project.model.Example;
@@ -13,12 +12,9 @@ import java.awt.event.MouseEvent;
  */
 public class ProgramController {
 
-    //Attribute
-
-
-    // Referenzen
-    private ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
+    private ViewController viewController;
     private EntityManager entityManager;
+    private InputManager inputManager;
 
     /**
      * Konstruktor
@@ -30,18 +26,17 @@ public class ProgramController {
     public ProgramController(ViewController viewController){
         this.viewController = viewController;
         entityManager=new EntityManager();
+        viewController.draw(entityManager,0);
+        inputManager=new InputManager(entityManager);
+        viewController.register(inputManager,0);
     }
 
     /**
      * Diese Methode wird genau ein mal nach Programmstart aufgerufen. Achtung: funktioniert nicht im Szenario-Modus
      */
     public void startProgram() {
-        //Hier wird eine lokale Referenz für ein House-Objekt angelegt.
-        Example firstHouse = new Example();
-
-        //Damit die draw-Methode des Objekts hinter firstHouse aufgerufen wird,
-        //muss dem ViewController-Objekt mitgeteilt werden, dass es das House-Objekt zeichnen soll.
-        viewController.draw(firstHouse);
+        //Example firstHouse = new Example();
+        //viewController.draw(firstHouse);
     }
 
     /**
