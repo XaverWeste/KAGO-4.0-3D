@@ -14,6 +14,7 @@ public class Config {
     public final static int WINDOW_WIDTH = 600;
     public final static int WINDOW_HEIGHT = 600+29;   // Effektive Höhe ist etwa 29 Pixel geringer (Titelleiste wird mitgezählt)
 
+    public final static boolean USE_CAMERA = true;
     public final static boolean ORTHOGRAPHIC_VIEW = false;
 
     // Weitere Optionen für das Projekt

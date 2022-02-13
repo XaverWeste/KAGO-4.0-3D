@@ -7,4 +7,6 @@ public interface Entitize {
     void draw(Graphics2D g);
 
     void rotate(boolean cW,double xDegrees,double yDegrees,double zDegrees);
+
+    void translate(double x,double y,double z);
 }

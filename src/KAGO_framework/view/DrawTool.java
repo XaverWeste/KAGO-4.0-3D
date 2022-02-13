@@ -1,8 +1,7 @@
 package KAGO_framework.view;
 
-import KAGO_framework.model.threeD.PointThreeD;
-import KAGO_framework.model.threeD.PolygonThreeD;
-import KAGO_framework.model.threeD.ThreeDObject;
+import KAGO_framework.model.threeD.shapes.PolygonThreeD;
+import KAGO_framework.model.threeD.shapes.ThreeDObject;
 import KAGO_framework.model.threeD.entities.Entity;
 import KAGO_framework.model.threeD.entities.EntityBuilder;
 

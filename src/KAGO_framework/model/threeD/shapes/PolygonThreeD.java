@@ -1,4 +1,7 @@
-package KAGO_framework.model.threeD;
+package KAGO_framework.model.threeD.shapes;
+
+import KAGO_framework.model.threeD.PointConverter;
+import KAGO_framework.model.threeD.PointThreeD;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -91,6 +94,14 @@ public class PolygonThreeD{
 
         for(int i=0;i<p.length;i++){
             p[i] = polygonList.get(i);
+        }
+    }
+
+    public void translate(double x, double y, double z){
+        for(PointThreeD value:points){
+            value.setX(value.getX()+x);
+            value.setY(value.getY()+y);
+            value.setZ(value.getZ()+z);
         }
     }
 

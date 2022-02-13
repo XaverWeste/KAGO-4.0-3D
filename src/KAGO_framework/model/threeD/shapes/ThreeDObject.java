@@ -1,4 +1,6 @@
-package KAGO_framework.model.threeD;
+package KAGO_framework.model.threeD.shapes;
+
+import KAGO_framework.model.threeD.shapes.PolygonThreeD;
 
 import java.awt.*;
 
@@ -47,6 +49,12 @@ public class ThreeDObject {
      */
     private void sortPolygons(){
         PolygonThreeD.sortPolygons(polygons);
+    }
+
+    public void translate(double x, double y, double z){
+        for(PolygonThreeD value:polygons){
+            value.translate(x,y,z);
+        }
     }
 
     /**

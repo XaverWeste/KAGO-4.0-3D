@@ -1,14 +1,18 @@
 package KAGO_framework.model.threeD.entities;
 
+import KAGO_framework.model.threeD.Camera;
+
 import java.awt.*;
 import java.util.ArrayList;
 
 public class EntityManager {
 
     private ArrayList<Entitize> entities;
+    private Camera camera;
 
     public EntityManager(){
-
+        entities=new ArrayList<>();
+        camera=new Camera(0,0,0);
     }
 
     public void draw(Graphics2D g){

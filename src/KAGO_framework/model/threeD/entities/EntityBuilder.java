@@ -1,8 +1,8 @@
 package KAGO_framework.model.threeD.entities;
 
 import KAGO_framework.model.threeD.PointThreeD;
-import KAGO_framework.model.threeD.PolygonThreeD;
-import KAGO_framework.model.threeD.ThreeDObject;
+import KAGO_framework.model.threeD.shapes.PolygonThreeD;
+import KAGO_framework.model.threeD.shapes.ThreeDObject;
 
 import java.awt.*;
 import java.util.ArrayList;

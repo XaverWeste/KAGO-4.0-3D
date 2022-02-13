@@ -1,6 +1,8 @@
 package my_project.control;
 
+import KAGO_framework.control.Interactable;
 import KAGO_framework.control.ViewController;
+import KAGO_framework.model.threeD.entities.EntityManager;
 import my_project.model.Example;
 
 import java.awt.event.MouseEvent;
@@ -16,6 +18,7 @@ public class ProgramController {
 
     // Referenzen
     private ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
+    private EntityManager entityManager;
 
     /**
      * Konstruktor
@@ -26,6 +29,7 @@ public class ProgramController {
      */
     public ProgramController(ViewController viewController){
         this.viewController = viewController;
+        entityManager=new EntityManager();
     }
 
     /**
