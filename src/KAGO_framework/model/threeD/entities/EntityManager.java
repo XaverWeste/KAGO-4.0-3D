@@ -1,5 +1,6 @@
 package KAGO_framework.model.threeD.entities;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class EntityManager {
@@ -8,5 +9,11 @@ public class EntityManager {
 
     public EntityManager(){
 
+    }
+
+    public void draw(Graphics2D g){
+        for(Entitize value:entities){
+            value.draw(g);
+        }
     }
 }
