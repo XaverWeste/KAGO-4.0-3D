@@ -15,7 +15,7 @@ public class EntityManager extends GraphicalObject {
     public EntityManager(){
         entities=new ArrayList<>();
         camera=new Camera(0,0,0);
-        add(EntityBuilder.createCube(300,300,50));
+        add(EntityBuilder.createCube(300,300,100));
     }
 
     public void draw(DrawTool d){
@@ -72,6 +72,10 @@ public class EntityManager extends GraphicalObject {
                     value.translate(-10,0,0);
                 }
             }
+            case KeyEvent.VK_UP->rotate(true,0,10,0);
+            case KeyEvent.VK_DOWN->rotate(true,0,-10,0);
+            case KeyEvent.VK_LEFT->rotate(true,0,0,-10);
+            case KeyEvent.VK_RIGHT->rotate(true,0,0,10);
         }
     }
 }

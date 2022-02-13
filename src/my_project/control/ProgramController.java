@@ -13,8 +13,6 @@ import java.awt.event.MouseEvent;
 public class ProgramController {
 
     private ViewController viewController;
-    private EntityManager entityManager;
-    private InputManager inputManager;
 
     /**
      * Konstruktor
@@ -25,9 +23,9 @@ public class ProgramController {
      */
     public ProgramController(ViewController viewController){
         this.viewController = viewController;
-        entityManager=new EntityManager();
+        EntityManager entityManager = new EntityManager();
         viewController.draw(entityManager,0);
-        inputManager=new InputManager(entityManager);
+        InputManager inputManager = new InputManager(entityManager);
         viewController.register(inputManager,0);
     }
 
