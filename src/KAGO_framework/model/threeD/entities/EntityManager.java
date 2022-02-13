@@ -16,4 +16,14 @@ public class EntityManager {
             value.draw(g);
         }
     }
+
+    public void add(Entitize e){
+        entities.add(e);
+    }
+
+    public void rotate(boolean cW,double xDegrees,double yDegrees,double zDegrees){
+        for(Entitize value:entities){
+            value.rotate(cW,xDegrees,yDegrees,zDegrees);
+        }
+    }
 }
