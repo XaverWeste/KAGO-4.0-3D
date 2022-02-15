@@ -343,7 +343,7 @@ public class DrawTool {
      * @param zRotation Die rotation um die z-Achse
      */
     public void drawCube(double x,double y,double size,double xRotation,double yRotation,double zRotation){
-        Entity e= EntityBuilder.createCube(x,y,size);
+        Entity e= EntityBuilder.createCube(x,y,size,0,0,0);
         e.rotate(true,xRotation,yRotation,zRotation);
         if(graphics2D!=null) e.draw(graphics2D);
     }
@@ -358,7 +358,7 @@ public class DrawTool {
      * @param zRotation Die rotation um die z-Achse
      */
     public void drawPyramid(double x,double y,double size,double xRotation,double yRotation,double zRotation){
-        Entity e= EntityBuilder.createPyramid(x,y,size);
+        Entity e= EntityBuilder.createPyramid(x,y,size,0,0,0);
         e.rotate(true,xRotation,yRotation,zRotation);
         if(graphics2D!=null) e.draw(graphics2D);
     }

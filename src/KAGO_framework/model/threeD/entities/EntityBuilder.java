@@ -9,15 +9,15 @@ import java.util.ArrayList;
 
 public class EntityBuilder {
 
-    public static Entity createCube(double x,double y,double size){
-        PointThreeD p1=new PointThreeD(size/2,-size/2,-size/2);
-        PointThreeD p2=new PointThreeD(size/2,size/2,-size/2);
-        PointThreeD p3=new PointThreeD(size/2,size/2,size/2);
-        PointThreeD p4=new PointThreeD(size/2,-size/2,size/2);
-        PointThreeD p5=new PointThreeD(-size/2,-size/2,-size/2);
-        PointThreeD p6=new PointThreeD(-size/2,size/2,-size/2);
-        PointThreeD p7=new PointThreeD(-size/2,size/2,size/2);
-        PointThreeD p8=new PointThreeD(-size/2,-size/2,size/2);
+    public static Entity createCube(double x,double y,double size,double centerX,double centerY,double centerZ){
+        PointThreeD p1=new PointThreeD(centerX+size/2,centerY-size/2,centerZ-size/2);
+        PointThreeD p2=new PointThreeD(centerX+size/2,centerY+size/2,centerZ-size/2);
+        PointThreeD p3=new PointThreeD(centerX+size/2,centerY+size/2,centerZ+size/2);
+        PointThreeD p4=new PointThreeD(centerX+size/2,centerY-size/2,centerZ+size/2);
+        PointThreeD p5=new PointThreeD(centerX-size/2,centerY-size/2,centerZ-size/2);
+        PointThreeD p6=new PointThreeD(centerX-size/2,centerY+size/2,centerZ-size/2);
+        PointThreeD p7=new PointThreeD(centerX-size/2,centerY+size/2,centerZ+size/2);
+        PointThreeD p8=new PointThreeD(centerX-size/2,centerY-size/2,centerZ+size/2);
         ThreeDObject t=new ThreeDObject(
                 x,
                 y,
@@ -31,12 +31,12 @@ public class EntityBuilder {
         return new Entity(new ArrayList<>(){{ add(t); }});
     }
 
-    public static Entity createPyramid(double x,double y,double size){
-        PointThreeD p1=new PointThreeD(size/2,-size/2,size/2);
-        PointThreeD p2=new PointThreeD(size/2,size/2,size/2);
-        PointThreeD p3=new PointThreeD(-size/2,size/2,size/2);
-        PointThreeD p4=new PointThreeD(-size/2,-size/2,size/2);
-        PointThreeD p5=new PointThreeD(0,0,-size/2);
+    public static Entity createPyramid(double x,double y,double size,double centerX,double centerY,double centerZ){
+        PointThreeD p1=new PointThreeD(centerX+size/2,centerY-size/2,centerZ+size/2);
+        PointThreeD p2=new PointThreeD(centerX+size/2,centerY+size/2,centerZ+size/2);
+        PointThreeD p3=new PointThreeD(centerX-size/2,centerY+size/2,centerZ+size/2);
+        PointThreeD p4=new PointThreeD(centerX-size/2,centerY-size/2,centerZ+size/2);
+        PointThreeD p5=new PointThreeD(centerX,centerY,-size/2);
         ThreeDObject t=new ThreeDObject(
                 x,
                 y,
