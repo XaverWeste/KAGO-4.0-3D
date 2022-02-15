@@ -1,8 +1,8 @@
 package KAGO_framework.model.threeD.entities;
-
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.model.threeD.Camera;
 import KAGO_framework.view.DrawTool;
+import my_project.Config;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -35,47 +35,33 @@ public class EntityManager extends GraphicalObject {
     }
 
     public void update(int key){
-        switch(key){
-            case KeyEvent.VK_W->{
-                camera.translate(0,0,10);
-                for(Entity value:entities){
-                    value.translate(0,0,10);
+        if(Config.USE_CAMERA) {
+            switch (key) {
+                case KeyEvent.VK_W -> {
+                    camera.translate(0, 0, 10);
+                    for (Entity value : entities) {
+                        value.translate(0, 0, 10);
+                    }
+                }
+                case KeyEvent.VK_A -> {
+                    camera.translate(0, 10, 0);
+                    for (Entity value : entities) {
+                        value.translate(0, 10, 0);
+                    }
+                }
+                case KeyEvent.VK_S -> {
+                    camera.translate(0, 0, -10);
+                    for (Entity value : entities) {
+                        value.translate(0, 0, -10);
+                    }
+                }
+                case KeyEvent.VK_D -> {
+                    camera.translate(0, -10, 0);
+                    for (Entity value : entities) {
+                        value.translate(0, -10, 0);
+                    }
                 }
             }
-            case KeyEvent.VK_A->{
-                camera.translate(0,10,0);
-                for(Entity value:entities){
-                    value.translate(0,10,0);
-                }
-            }
-            case KeyEvent.VK_S->{
-                camera.translate(0,0,-10);
-                for(Entity value:entities){
-                    value.translate(0,0,-10);
-                }
-            }
-            case KeyEvent.VK_D->{
-                camera.translate(0,-10,0);
-                for(Entity value:entities){
-                    value.translate(0,-10,0);
-                }
-            }
-            case KeyEvent.VK_Q->{
-                camera.translate(10,0,0);
-                for(Entity value:entities){
-                    value.translate(10,0,0);
-                }
-            }
-            case KeyEvent.VK_E->{
-                camera.translate(-10,0,0);
-                for(Entity value:entities){
-                    value.translate(-10,0,0);
-                }
-            }
-            case KeyEvent.VK_UP->rotate(true,0,10,0);
-            case KeyEvent.VK_DOWN->rotate(true,0,-10,0);
-            case KeyEvent.VK_LEFT->rotate(true,0,0,-10);
-            case KeyEvent.VK_RIGHT->rotate(true,0,0,10);
         }
     }
 }
