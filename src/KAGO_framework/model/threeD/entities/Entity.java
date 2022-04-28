@@ -25,6 +25,12 @@ public class Entity {
         }
     }
 
+    public void rotateAround(double x,double y,double z,boolean cW,double xDegrees,double yDegrees,double zDegrees){
+        for(ThreeDObject value:objects){
+            value.rotateAround(x,y,z,cW, xDegrees, yDegrees, zDegrees);
+        }
+    }
+
     public void translate(double x, double y, double z) {
         for(ThreeDObject value:objects){
             value.translate(x,y,z);

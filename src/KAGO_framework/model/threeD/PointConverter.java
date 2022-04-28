@@ -65,4 +65,37 @@ public class PointConverter {
         p.setX(radius*Math.cos(theta));
     }
 
+    /**
+     * rotiert einen Punkt um die X-Achse
+     */
+    public static void rotateAxisXAround(double x,PointThreeD p,boolean cW,double degrees){
+        double radius=Math.sqrt(p.getY()*p.getY()+p.getZ()*p.getZ());
+        double theta=Math.atan2(p.getZ(),p.getY());
+        theta+=2*Math.PI/360*degrees*(cW?-1:1);
+        p.setY(radius*Math.cos(theta));
+        p.setZ(radius*Math.sin(theta));
+    }
+
+    /**
+     * rotiert einen Punkt um die Y-Achse
+     */
+    public static void rotateAxisYAround(double y,PointThreeD p,boolean cW,double degrees){
+        double radius=Math.sqrt(p.getX()*p.getX()+p.getZ()*p.getZ());
+        double theta=Math.atan2(p.getX(),p.getZ());
+        theta+=2*Math.PI/360*degrees*(cW?-1:1);
+        p.setX(radius*Math.sin(theta));
+        p.setZ(radius*Math.cos(theta));
+    }
+
+    /**
+     * rotiert einen Punkt um die Z-Achse
+     */
+    public static void rotateAxisZAround(double z,PointThreeD p,boolean cW,double degrees){
+        double radius=Math.sqrt(p.getY()*p.getY()+p.getX()*p.getX());
+        double theta=Math.atan2(p.getY(),p.getX());
+        theta+=2*Math.PI/360*degrees*(cW?-1:1);
+        p.setY(radius*Math.sin(theta));
+        p.setX(radius*Math.cos(theta));
+    }
+
 }

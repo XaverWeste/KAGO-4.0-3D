@@ -13,10 +13,8 @@ import java.awt.*;
  */
 public class DrawingPanel extends JPanel  {
 
-    //Attribute
     private boolean requested = false;
 
-    // Referenzen
     private DrawTool drawTool;
     private ViewController viewController;
 

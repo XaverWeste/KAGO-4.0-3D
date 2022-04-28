@@ -2,7 +2,6 @@ package my_project.control;
 
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.threeD.entities.EntityManager;
-import my_project.model.Example;
 
 import java.awt.event.MouseEvent;
 

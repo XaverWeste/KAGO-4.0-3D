@@ -76,6 +76,14 @@ public class PolygonThreeD{
         }
     }
 
+    public void rotateAround(double x,double y,double z,boolean cW,double xDegrees,double yDegrees,double zDegrees){
+        for(PointThreeD value:points){
+            PointConverter.rotateAxisXAround(x,value,cW,xDegrees);
+            PointConverter.rotateAxisYAround(y,value,cW,yDegrees);
+            PointConverter.rotateAxisZAround(z,value,cW,zDegrees);
+        }
+    }
+
     /**
      * verändert die Farbe des Polygons
      */

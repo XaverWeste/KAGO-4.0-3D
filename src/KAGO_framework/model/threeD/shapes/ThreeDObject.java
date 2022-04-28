@@ -1,7 +1,5 @@
 package KAGO_framework.model.threeD.shapes;
 
-import KAGO_framework.model.threeD.shapes.PolygonThreeD;
-
 import java.awt.*;
 
 public class ThreeDObject {
@@ -42,6 +40,12 @@ public class ThreeDObject {
             value.rotate(cW, xDegrees, yDegrees, zDegrees);
         }
         sortPolygons();
+    }
+
+    public void rotateAround(double x,double y,double z,boolean cW,double xDegrees,double yDegrees,double zDegrees){
+        for(PolygonThreeD value:polygons){
+            value.rotateAround(x,y,z,cW, xDegrees, yDegrees, zDegrees);
+        }
     }
 
     /**
