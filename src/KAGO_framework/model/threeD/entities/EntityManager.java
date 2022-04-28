@@ -38,25 +38,25 @@ public class EntityManager extends GraphicalObject {
     public void update(int key){
         if(Config.USE_CAMERA) {
             switch (key) {
-                case KeyEvent.VK_W -> {
+                case KeyEvent.VK_S -> {
                     camera.translate(0, 0, 10);
                     for (Entity value : entities) {
                         value.translate(0, 0, 10);
                     }
                 }
-                case KeyEvent.VK_A -> {
+                case KeyEvent.VK_D -> {
                     camera.translate(0, 10, 0);
                     for (Entity value : entities) {
                         value.translate(0, 10, 0);
                     }
                 }
-                case KeyEvent.VK_S -> {
+                case KeyEvent.VK_W -> {
                     camera.translate(0, 0, -10);
                     for (Entity value : entities) {
                         value.translate(0, 0, -10);
                     }
                 }
-                case KeyEvent.VK_D -> {
+                case KeyEvent.VK_A -> {
                     camera.translate(0, -10, 0);
                     for (Entity value : entities) {
                         value.translate(0, -10, 0);
