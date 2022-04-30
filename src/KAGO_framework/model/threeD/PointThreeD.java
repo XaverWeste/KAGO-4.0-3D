@@ -17,7 +17,6 @@ public class PointThreeD {
         zOffset=0;
     }
 
-
     public double getX() {
         return x;
     }

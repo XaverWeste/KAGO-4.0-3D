@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class EntityManager extends GraphicalObject {
 
-    private ArrayList<Entity> entities;
-    private Camera camera;
+    private final ArrayList<Entity> entities;
+    private final Camera camera;
 
     public EntityManager(){
         entities=new ArrayList<>();
@@ -27,12 +27,6 @@ public class EntityManager extends GraphicalObject {
 
     public void add(Entity e){
         entities.add(e);
-    }
-
-    public void rotate(boolean cW,double xDegrees,double yDegrees,double zDegrees){
-        for(Entity value:entities){
-            value.rotate(cW,xDegrees,yDegrees,zDegrees);
-        }
     }
 
     public void update(int key){
@@ -60,6 +54,28 @@ public class EntityManager extends GraphicalObject {
                     camera.translate(0, -10, 0);
                     for (Entity value : entities) {
                         value.translate(0, -10, 0);
+                    }
+                }
+                case KeyEvent.VK_Q -> {
+                    for (Entity value : entities) {
+                        value.rotateAround(camera.getX(),camera.getY(),camera.getZ(),false,0, 0, 10);
+                    }
+                }
+                case KeyEvent.VK_E -> {
+                    for (Entity value : entities) {
+                        value.rotateAround(camera.getX(),camera.getY(),camera.getZ(),true,0, 0, -10);
+                    }
+                }
+                case KeyEvent.VK_R -> {
+                    camera.translate(10, 0, 0);
+                    for (Entity value : entities) {
+                        value.translate(10, 0, 0);
+                    }
+                }
+                case KeyEvent.VK_F -> {
+                    camera.translate(-10, 0, 0);
+                    for (Entity value : entities) {
+                        value.translate(-10,0, 0);
                     }
                 }
             }
