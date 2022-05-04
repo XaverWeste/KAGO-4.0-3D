@@ -15,7 +15,7 @@ public class EntityManager extends GraphicalObject {
     public EntityManager(){
         entities=new ArrayList<>();
         camera=new Camera(0,0,0);
-        add(EntityBuilder.createCube(300,300,100,0,0,0));
+        //add(EntityBuilder.createCube(300,300,100,0,0,0));
         //add(EntityBuilder.createDiamond(100,100,50,10,0.9));
     }
 

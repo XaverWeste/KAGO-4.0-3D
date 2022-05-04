@@ -43,7 +43,7 @@ public class EntityBuilder {
                 new PolygonThreeD(Color.YELLOW,p1,p2,p3,p4),
                 new PolygonThreeD(Color.RED,p1,p2,p5),
                 new PolygonThreeD(Color.GREEN,p2,p3,p5),
-                new PolygonThreeD(Color.YELLOW,p3,p4,p5),
+                new PolygonThreeD(Color.ORANGE,p3,p4,p5),
                 new PolygonThreeD(Color.BLUE,p4,p1,p5)
         );
         return new Entity(new ArrayList<>(){{ add(t); }});

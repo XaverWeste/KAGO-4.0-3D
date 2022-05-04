@@ -2,6 +2,7 @@ package my_project.control;
 
 import KAGO_framework.control.ViewController;
 import KAGO_framework.model.threeD.entities.EntityManager;
+import my_project.model.Example;
 
 import java.awt.event.MouseEvent;
 
@@ -32,8 +33,8 @@ public class ProgramController {
      * Diese Methode wird genau ein mal nach Programmstart aufgerufen. Achtung: funktioniert nicht im Szenario-Modus
      */
     public void startProgram() {
-        //Example firstHouse = new Example();
-        //viewController.draw(firstHouse);
+        Example example = new Example();
+        viewController.draw(example);
     }
 
     /**
