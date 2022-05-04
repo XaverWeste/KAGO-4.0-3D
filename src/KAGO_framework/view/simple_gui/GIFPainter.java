@@ -1,7 +1,7 @@
 package KAGO_framework.view.simple_gui;
 
 import KAGO_framework.model.GraphicalObject;
-import KAGO_framework.model.abitur.datenstrukturen.List;
+import KAGO_framework.model.datenstrukturen.List;
 import KAGO_framework.view.DrawTool;
 
 import javax.swing.*;
