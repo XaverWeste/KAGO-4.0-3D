@@ -1,10 +1,10 @@
 package KAGO_framework.view.simple_gui;
 
 import KAGO_framework.model.GraphicalObject;
-import KAGO_framework.model.datenstrukturen.List;
 import KAGO_framework.view.DrawTool;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 /**
  * Dient zur Anzeige eines .gif-Bildes, das auch animiert sein kann.
@@ -13,7 +13,7 @@ import javax.swing.*;
  */
 public class GIFPainter extends GraphicalObject {
 
-    private List<ImageIcon> images;
+    private ArrayList<ImageIcon> images;
     private int amount;
 
     /**
@@ -23,9 +23,8 @@ public class GIFPainter extends GraphicalObject {
      * @param y die y-Koordinate der oberen linken Ecke
      */
     public GIFPainter(String imagePath, double x, double y){
-        images = new List<>();
+        images = new ArrayList<>();
         addImage(imagePath);
-        images.toFirst();
         this.x = x;
         this.y = y;
     }
@@ -35,7 +34,7 @@ public class GIFPainter extends GraphicalObject {
      * @param imagePath der Pfad zum zu ergänzenden GIF
      */
     public void addImage(String imagePath){
-        images.append(new ImageIcon(imagePath));
+        images.add(new ImageIcon(imagePath));
         amount++;
     }
 
@@ -44,18 +43,12 @@ public class GIFPainter extends GraphicalObject {
      * @param i der Index des GIFs
      */
     public void setImageByIndex(int i){
-        if(!images.isEmpty() && i <= amount){
-            int current = 1;
-            images.toFirst();
-            while(current < i){
-                images.next();
-            }
-        }
+        amount=i;
     }
 
     @Override
     public void draw(DrawTool drawTool) {
-        if(images.hasAccess()) images.getContent().paintIcon(drawTool.getParent(), drawTool.getGraphics2D(), (int)x, (int)y);
+        images.get(amount).paintIcon(drawTool.getParent(), drawTool.getGraphics2D(), (int)x, (int)y);
     }
 
     @Override
