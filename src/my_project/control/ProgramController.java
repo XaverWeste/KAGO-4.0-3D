@@ -1,7 +1,6 @@
 package my_project.control;
 
 import KAGO_framework.control.ViewController;
-import KAGO_framework.model.threeD.entities.EntityManager;
 
 import java.awt.event.MouseEvent;
 
@@ -11,6 +10,8 @@ import java.awt.event.MouseEvent;
  */
 public class ProgramController {
 
+    private final ViewController v;
+
     /**
      * Konstruktor
      * Dieser legt das Objekt der Klasse ProgramController an, das den Programmfluss steuert.
@@ -19,10 +20,7 @@ public class ProgramController {
      * @param viewController das viewController-Objekt des Programms
      */
     public ProgramController(ViewController viewController){
-        EntityManager entityManager = new EntityManager();
-        viewController.draw(entityManager,0);
-        InputManager inputManager = new InputManager(entityManager);
-        viewController.register(inputManager,0);
+        v=viewController;
     }
 
     /**
