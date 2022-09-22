@@ -14,14 +14,11 @@ import java.io.File;
  */
 public class Sound {
 
-    // Attribute
-    private String filename;
-    private String name;
-    private String path;
-    private Media sound;
-
-    // Referenz
-    private MediaPlayer mediaPlayer;
+    private final String filename;
+    private final String name;
+    private final String path;
+    private final Media sound;
+    private final MediaPlayer mediaPlayer;
 
     /**
      * Erzeugt einen neuen Sound mit Angabe, ob er wiederholt werden soll.
@@ -68,18 +65,14 @@ public class Sound {
      * Stoppt den Sound.
      */
     public void stop() {
-        while(mediaPlayer.getStatus() != MediaPlayer.Status.STOPPED){
-            mediaPlayer.stop();
-        }
+        while(mediaPlayer.getStatus() != MediaPlayer.Status.STOPPED) mediaPlayer.stop();
     }
 
     /**
      * Überprüft, ob der Sound gerade abgespielt wird.
-     * @return
      */
     public boolean isPlaying(){
-        if (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) return true;
-        return false;
+        return mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING;
     }
 
     /**
@@ -87,9 +80,7 @@ public class Sound {
      * @param v die neue Lautstärke zwischen 0 und 1
      */
     public void setVolume(double v){
-        if(v >= 0 && v <= 1){
-            mediaPlayer.setVolume(v);
-        }
+        if(v >= 0 && v <= 1) mediaPlayer.setVolume(v);
     }
 
     /**

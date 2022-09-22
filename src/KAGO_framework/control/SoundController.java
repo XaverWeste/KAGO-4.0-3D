@@ -37,13 +37,11 @@ public class SoundController {
         }
     }
 
-    // Attribute
     private boolean initialized, started;
 
-    // Referenzen
-    private ArrayList<Sound> loadedSounds;
-    private ArrayList<SoundData> soundsToLoad;
-    private Queue<String> playingQueue;
+    private final ArrayList<Sound> loadedSounds;
+    private final ArrayList<SoundData> soundsToLoad;
+    private final Queue<String> playingQueue;
 
     /**
      * Erzeugt ein Objekt der Klasse SoundController. Es ist nur eines dieser
@@ -60,7 +58,7 @@ public class SoundController {
             SwingUtilities.invokeLater(() -> {
                 try {
                     if ( Config.INFO_MESSAGES) System.out.println("Instanziiere JFXPanel für Tonwiedergabe...");
-                    new JFXPanel(); // initializes JavaFX environment
+                    new JFXPanel();
                     initialized = true;
                 } catch (Exception e) {
                     if ( Config.INFO_MESSAGES) System.out.println("Sound-Initialsierung final fehlgeschlagen (JFX-Panel). Vermutlich nicht unterstützte Java-Version (Java 9 verwenden).");

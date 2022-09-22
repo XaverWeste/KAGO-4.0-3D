@@ -27,7 +27,6 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
      * und eine Liste von Objekten, die über Eingaben informiert werden sollen
      */
     private class Scene {
-
         DrawingPanel drawingPanel;
         ArrayList<Drawable> drawables;
         ArrayList<Interactable> interactables;
@@ -40,17 +39,14 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
         }
     }
 
-    // Referenzen
-    private DrawFrame drawFrame;    // das Fenster des Programms
-    private ProgramController programController; // das Objekt, das das Programm steuern soll
-    private Timer gameProcess;
-    private ArrayList<Integer> currentlyPressedKeys;
+    private DrawFrame drawFrame;
+    private ProgramController programController;
+    private final ArrayList<Integer> currentlyPressedKeys;
     private ArrayList<Scene> scenes;
     private SoundController soundController;
 
-    // Attribute
-    private int dt;
-    private long lastLoop_Drawables, elapsedTime_Drawables;
+    private final int dt;
+    private long lastLoop_Drawables;
     private long lastLoop, elapsedTime;
     private int currentScene;
     private boolean notChangingInteractables, notChangingDrawables;
@@ -63,21 +59,15 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
         notChangingInteractables = true;
         scenes = new ArrayList<>();
         currentlyPressedKeys = new ArrayList<>();
-        // Erzeuge Fenster und erste Szene
         createWindow();
-        // Setzt die Ziel-Zeit zwischen zwei aufeinander folgenden Frames in Millisekunden
-        dt = 35; //Vernuenftiger Startwert
+        dt = 35;
         if ( Config.INFO_MESSAGES) System.out.println("  > ViewController: Erzeuge ProgramController und starte Spielprozess (Min. dt = "+dt+"ms)...");
         if ( Config.INFO_MESSAGES) System.out.println("     > Es wird nun einmalig die Methode startProgram von dem ProgramController-Objekt aufgerufen.");
         if ( Config.INFO_MESSAGES) System.out.println("     > Es wird wiederholend die Methode updateProgram von dem ProgramController-Objekt aufgerufen.");
         if ( Config.INFO_MESSAGES) System.out.println("-------------------------------------------------------------------------------------------------\n");
         if ( Config.INFO_MESSAGES) System.out.println("** Ab hier folgt das Log zum laufenden Programm: **");
-        if(my_project.Config.useSound){
-            soundController = new SoundController();
-        } else {
-            if ( Config.INFO_MESSAGES) System.out.println("** Achtung! Sound deaktiviert => soundController ist NULL (kann in Config geändert werden). **");
-        }
-
+        if(my_project.Config.useSound) soundController = new SoundController();
+        else if ( Config.INFO_MESSAGES) System.out.println("** Achtung! Sound deaktiviert => soundController ist NULL (kann in Config geändert werden). **");
         if (!my_project.Config.SHOW_DEFAULT_WINDOW){
             setDrawFrameVisible(false);
             if(Config.INFO_MESSAGES) System.out.println("** Achtung! Standardfenster deaktiviert => wird nicht angezeigt.). **");
@@ -91,9 +81,8 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
     private void startProgram(){
         programController = new ProgramController(this);
         programController.startProgram();
-        // Starte nebenlaeufigen Prozess, der Zeichnen und Animation uebernimmt
         lastLoop = System.nanoTime();
-        gameProcess = new Timer(dt, this);
+        Timer gameProcess = new Timer(dt, this);
         gameProcess.start();
     }
 
@@ -110,23 +99,18 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
      * Erzeugt das Fenster und die erste Szene, die sofort angezeigt wird.
      */
     private void createWindow(){
-        // Berechne Mitte des Bildschirms
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         int width = gd.getDisplayMode().getWidth();
         int height = gd.getDisplayMode().getHeight();
         int x = width / 2;
         int y = height / 2;
-        // Berechne die beste obere linke Ecke für das Fenster so, dass es genau mittig erscheint
         x = x - my_project.Config.WINDOW_WIDTH / 2;
         y = y - my_project.Config.WINDOW_HEIGHT / 2;
-        // Erzeuge die erste Szene
         createScene();
-        // Erzeuge ein neues Fenster zum Zeichnen
         drawFrame = new DrawFrame(my_project.Config.WINDOW_TITLE, x, y, my_project.Config.WINDOW_WIDTH, my_project.Config.WINDOW_HEIGHT, scenes.get(0).drawingPanel);
         drawFrame.setResizable(false);
         showScene(0);
-        // Übergibt den weiteren Programmfluss an das neue Objekt der Klasse ViewController
-        if ( Config.INFO_MESSAGES) System.out.println("  > ViewController: Fenster eingerichtet. Startszene (Index: 0) angelegt.");
+        if(Config.INFO_MESSAGES) System.out.println("  > ViewController: Fenster eingerichtet. Startszene (Index: 0) angelegt.");
     }
 
     /**
@@ -134,13 +118,10 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
      * @param index Gibt die Nummer des gewünschten Drawing-Panel-Objekts an.
      */
     public void showScene(int index){
-        // Setze das gewuenschte DrawingPanel und lege eine Referenz darauf an.
         if (index < scenes.size()) {
             currentScene = index;
             drawFrame.setActiveDrawingPanel(scenes.get(currentScene).drawingPanel);
-        } else {
-            if ( Config.INFO_MESSAGES) System.out.println("  > ViewController: Fehler: Eine Szene mit dem Index "+index+" existiert nicht.");
-        }
+        }else if(Config.INFO_MESSAGES) System.out.println("  > ViewController: Fehler: Eine Szene mit dem Index "+index+" existiert nicht.");
     }
 
     /**
@@ -156,9 +137,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
      * Szenenanzahl ist, passiert nichts.
      */
     public void replaceScene(int index){
-        if(scenes.size()-1<=index){
-            scenes.set(index,new Scene(this));
-        }
+        if(scenes.size()-1<=index) scenes.set(index,new Scene(this));
     }
 
     public SoundController getSoundController(){
@@ -171,9 +150,8 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
      * @param sceneIndex Die Nummer der Szene für das Objekt
      */
     public void draw(Drawable d, int sceneIndex){
-        if ( sceneIndex < scenes.size() && d != null){
-            SwingUtilities.invokeLater(() -> scenes.get(sceneIndex).drawables.add(d));
-        }
+        if(sceneIndex < scenes.size() && d != null) SwingUtilities.invokeLater(() -> scenes.get(sceneIndex).drawables.add(d));
+
     }
 
     /**
@@ -199,9 +177,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
      * @param i das gewünschte Objekt
      */
     public void register(Interactable i, int sceneIndex){
-        if (sceneIndex < scenes.size() && i!=null){
-            SwingUtilities.invokeLater(() -> scenes.get(sceneIndex).interactables.add(i));
-        }
+        if(sceneIndex < scenes.size() && i!=null) SwingUtilities.invokeLater(() -> scenes.get(sceneIndex).interactables.add(i));
     }
 
     /**
@@ -220,7 +196,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
      * @param sceneIndex Der Index des DrawingPanel-Objekts von dem entfernt werden soll
      */
     public void removeDrawable(Drawable d, int sceneIndex){
-        if ( sceneIndex < scenes.size() && d != null){
+        if(sceneIndex < scenes.size() && d != null){
             notChangingDrawables = false;
             SwingUtilities.invokeLater(() -> {
                 scenes.get(sceneIndex).drawables.remove(d);
@@ -245,7 +221,7 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
      * @param sceneIndex Der Index des DrawingPanel-Objekts von dem entfernt werden soll
      */
     public void removeInteractable(Interactable i, int sceneIndex){
-        if ( sceneIndex < scenes.size() && i != null){
+        if(sceneIndex < scenes.size() && i != null){
             notChangingInteractables = false;
             SwingUtilities.invokeLater(() -> {
                 scenes.get(sceneIndex).interactables.remove(i);
@@ -268,11 +244,8 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
         int dt = (int) ((elapsedTime / 1000000L));
         double dtSeconds = (double)dt/1000;
         if ( dtSeconds == 0 ) dtSeconds = 0.01;
-        // Führe Berechnungen und Aktualisierungen im Hauptobjekt aus
         programController.updateProgram(dtSeconds);
-        // Zeichne alle Objekte der aktuellen Szene
         scenes.get(currentScene).drawingPanel.repaint();
-        // Aktualisiere SoundController, wenn vorhanden
         if(soundController != null) soundController.update(dtSeconds);
     }
 
@@ -282,7 +255,6 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
      * @param drawTool das zur Verfügung gestellte DrawTool des Fensters
      */
     public void drawAndUpdateObjects(DrawTool drawTool){
-        elapsedTime_Drawables = System.nanoTime() - lastLoop_Drawables;
         lastLoop_Drawables = System.nanoTime();
         int dt = (int) ((elapsedTime / 1000000L));
         double dtSeconds = (double)dt/1000;
@@ -320,8 +292,6 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
     public void setDrawFrameVisible(boolean b){
         drawFrame.setVisible(b);
     }
-
-    /* INTERFACE METHODEN */
 
     @Override
     public void mouseReleased(MouseEvent e) {
@@ -404,5 +374,4 @@ public class ViewController implements ActionListener, KeyListener, MouseListene
             tmpInteractable.keyReleased(e.getKeyCode());
         }
     }
-
 }

@@ -13,10 +13,6 @@ import java.awt.*;
  */
 public class MainController {
 
-    // Attribute
-
-    // Referenzen
-
     /**
      * Diese Methode startet das gesamte Framework und erzeugt am Ende dieses Prozesses ein Objekt der Klasse
      * ProgramController aus dem Paket "my_project > control"
@@ -24,16 +20,8 @@ public class MainController {
     public static void startFramework(){
         if ( Config.INFO_MESSAGES) System.out.println("***** PROGRAMMSTART ("+" Framework: "+Config.VERSION+") *****.");
         if ( Config.INFO_MESSAGES) System.out.println("** Supported Java-Versions: "+ Config.JAVA_SUPPORTED);
-        if ( Config.INFO_MESSAGES) System.out.println("");
         if ( Config.INFO_MESSAGES) System.out.println("** Ablauf der Framework-Initialisierung: **");
-        EventQueue.invokeLater(
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        if ( Config.INFO_MESSAGES) System.out.println("  > Main-Methode: Programmstart. Erzeuge ein Objekt der Main-Controller-Klasse.");
-                        new MainController();
-                    }
-                });
+        EventQueue.invokeLater(MainController::new);
     }
 
     /**
