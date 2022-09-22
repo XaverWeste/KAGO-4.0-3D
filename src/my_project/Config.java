@@ -6,7 +6,7 @@ package my_project;
  */
 public class Config {
 
-    public final static String WINDOW_TITLE = "Unbenanntes KAGO-4.1b-Projekt";
+    public final static String WINDOW_TITLE = "KAGO-3D-Projekt";
 
     public final static boolean SHOW_DEFAULT_WINDOW = true;
     public final static int WINDOW_WIDTH = 600;

@@ -20,9 +20,7 @@ public class EntityManager extends GraphicalObject {
     }
 
     public void draw(DrawTool d){
-        for(Entity value:entities){
-            value.draw(d.getGraphics2D());
-        }
+        for(Entity value:entities) value.draw(d);
     }
 
     public void add(Entity e){
