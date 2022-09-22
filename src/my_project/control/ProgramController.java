@@ -11,8 +11,6 @@ import java.awt.event.MouseEvent;
  */
 public class ProgramController {
 
-    private final ViewController viewController;
-
     /**
      * Konstruktor
      * Dieser legt das Objekt der Klasse ProgramController an, das den Programmfluss steuert.
@@ -21,8 +19,7 @@ public class ProgramController {
      * @param viewController das viewController-Objekt des Programms
      */
     public ProgramController(ViewController viewController){
-        this.viewController = viewController;
-         EntityManager entityManager = new EntityManager();
+        EntityManager entityManager = new EntityManager();
         viewController.draw(entityManager,0);
         InputManager inputManager = new InputManager(entityManager);
         viewController.register(inputManager,0);
