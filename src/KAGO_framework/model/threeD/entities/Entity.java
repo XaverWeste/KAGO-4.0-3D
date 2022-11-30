@@ -15,8 +15,7 @@ public class Entity extends GraphicalObject {
         objects=objectList;
     }
 
-    public void draw(DrawTool d){
-        Graphics2D g=d.getGraphics2D();
+    public void draw(Graphics2D g){
         for(ThreeDObject value:objects) value.draw(g);
     }
 

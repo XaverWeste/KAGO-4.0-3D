@@ -21,6 +21,7 @@ public class ProgramController {
      */
     public ProgramController(ViewController viewController){
         v=viewController;
+        v.draw(new Beispiel());
     }
 
     /**
