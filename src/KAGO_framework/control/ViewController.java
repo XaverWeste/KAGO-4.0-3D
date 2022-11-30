@@ -3,7 +3,7 @@ package KAGO_framework.control;
 import KAGO_framework.Config;
 import KAGO_framework.view.DrawTool;
 //import KAGO_scenario_framework.control.ScenarioController;
-import my_project.control.ProgramController;
+import my_project.ProgramController;
 import KAGO_framework.view.DrawFrame;
 import KAGO_framework.view.DrawingPanel;
 
